@@ -1,0 +1,12 @@
+# Ubuntu and Debian
+# Add the InfluxData key to verify downloads and add the repository
+curl --silent --location -O 
+httpsrepos.influxdata.cominfluxdata-archive.key
+echo 943666881a1b8d9b849b74caebf02d3465d6beb716510d86a39f6c8e8dac7515  influxdata-archive.key 
+ sha256sum --check - && cat influxdata-archive.key 
+ gpg --dearmor 
+ tee etcapttrusted.gpg.dinfluxdata-archive.gpg  devnull 
+&& echo 'deb [signed-by=etcapttrusted.gpg.dinfluxdata-archive.gpg] httpsrepos.influxdata.comdebian stable main' 
+ tee etcaptsources.list.dinfluxdata.list
+# Install influxdb
+sudo apt-get update && sudo apt-get install influxdb2
